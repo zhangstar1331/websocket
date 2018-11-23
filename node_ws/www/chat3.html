@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://static.wanlianjin.com/data/m/wlcs/js/nocar/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <ul id="messages"></ul>
+    <input id="m" autocomplete="off" /><button>Send</button>
+    <script>
+        var socket = io();
+        $('button').click(() => {
+            //发送消息
+            socket.emit('message',{'messages':'小明'+$('#m').val()});
+            $('#m').val('')
+        })
+        //接收消息
+        socket.on('message', (data) => {
+            console.log(data)
+            $('#messages').append('<li>'+ data.messages +'</li>')
+        })
+    </script>
+</body>
+</html>
