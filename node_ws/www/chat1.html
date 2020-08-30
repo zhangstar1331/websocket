@@ -14,7 +14,7 @@
             var ws = new WebSocket('ws://100.39.8.55:3000');
 
             ws.onopen = function(e){
-                console.log("连接服务器成功");
+                console.log("连接服务器成功了");
                 $('button').click(() => {
                     if($('#m').val()){
                         ws.send('小红:'+$('#m').val());
